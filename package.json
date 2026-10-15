@@ -1,0 +1,19 @@
+{
+  "name": "solarvey",
+  "private": true,
+  "packageManager": "pnpm@12.4.2",
+  "scripts": {
+    "dev": "pnpm --dir web dev",
+    "build": "pnpm --dir web build",
+    "start": "pnpm --dir web start",
+    "lint": "pnpm --dir web lint && pnpm lint:rust",
+    "lint:rust": "cargo clippy --manifest-path contracts/Cargo.toml --all-targets -- -D warnings",
+    "fmt": "prettier --write . && cargo fmt --manifest-path contracts/Cargo.toml --all",
+    "fmt:check": "prettier --check . && cargo fmt --manifest-path contracts/Cargo.toml --all -- --check",
+    "test": "pnpm test:contract",
+    "test:contract": "cargo test --manifest-path contracts/Cargo.toml"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10"
+  }
+}

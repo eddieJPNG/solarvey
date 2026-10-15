@@ -1,0 +1,5 @@
+# Formatação do workspace Rust em `contracts/`.
+# Uso: `cargo fmt --all` (dentro de contracts/) · conferir: `cargo fmt --all -- --check`
+#
+# O `edition` é lido do Cargo.toml pelo `cargo fmt`; nada de estilo não-padrão
+# aqui de propósito — o código do contrato segue o padrão do rustfmt.

@@ -1,0 +1,18 @@
+# Artefatos gerados
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+contracts/target/
+**/test_snapshots/
+pnpm-lock.yaml
+package-lock.json
+
+# Documentos de design/planejamento — formatá-los bagunçaria o diff
+docs/
+
+# Assets
+public/
+*.wasm

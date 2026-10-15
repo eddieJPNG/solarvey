@@ -1,0 +1,193 @@
+/*
+ * Solarvey — design tokens.
+ *
+ * S0 "Design": extrair a identidade (amarelo · azul-marinho · branco-nuvem ·
+ * laranja) para o tema. **Só tokens** — nenhuma tela/componente aqui.
+ * Uso: `var(--color-accent)`, `var(--space-4)`, `var(--radius-md)`, …
+ */
+
+:root {
+  /* ---------------------------------------------------------- identidade */
+
+  /* Amarelo — destaque primário (CTA, recompensa). */
+  --color-yellow-100: #fff4d1;
+  --color-yellow-300: #ffdc85;
+  --color-yellow-500: #ffc940;
+  --color-yellow-700: #c99200;
+
+  /* Azul-marinho — base estrutural (texto, fundos profundos). */
+  --color-navy-950: #070e1d;
+  --color-navy-900: #0e1b33;
+  --color-navy-800: #16264a;
+  --color-navy-700: #1f3767;
+  --color-navy-500: #3b5a96;
+  --color-navy-300: #8fa4cb;
+
+  /* Branco-nuvem — superfícies claras. */
+  --color-cloud-50: #fbfcfe;
+  --color-cloud-100: #f5f8fc;
+  --color-cloud-200: #e8eef7;
+  --color-cloud-300: #d6dfeb;
+
+  /* Laranja — sinal secundário (atenção, estados de erro/pendência). */
+  --color-orange-100: #ffe9dc;
+  --color-orange-400: #ff9a5c;
+  --color-orange-500: #ff7a2f;
+  --color-orange-700: #c24b00;
+
+  /* ------------------------------------------------------- semântica claro */
+
+  --color-bg: var(--color-cloud-100);
+  --color-surface: #ffffff;
+  --color-surface-raised: var(--color-cloud-50);
+  --color-text: var(--color-navy-900);
+  --color-text-muted: var(--color-navy-500);
+  --color-text-inverse: var(--color-cloud-50);
+  --color-border: var(--color-cloud-300);
+  --color-border-strong: var(--color-navy-300);
+
+  --color-accent: var(--color-yellow-500);
+  --color-accent-hover: var(--color-yellow-700);
+  --color-accent-contrast: var(--color-navy-950);
+  --color-accent-soft: var(--color-yellow-100);
+
+  --color-brand-navy: var(--color-navy-900);
+  --color-brand-cloud: var(--color-cloud-100);
+  --color-brand-orange: var(--color-orange-500);
+
+  --color-info: var(--color-navy-500);
+  --color-success: #1f9d55;
+  --color-warning: var(--color-orange-500);
+  --color-danger: #d13415;
+  --color-danger-soft: var(--color-orange-100);
+
+  /* --------------------------------------------------------------- tipografia */
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---------------------------------------------------------------- espaço */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* --------------------------------------------------------------- raios/sombras */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(14 27 51 / 8%);
+  --shadow-md: 0 4px 16px rgb(14 27 51 / 10%);
+  --shadow-lg: 0 12px 32px rgb(14 27 51 / 14%);
+
+  /* ---------------------------------------------------------------- movimento */
+
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0.2, 1);
+
+  /* -------------------------------------------------------------------- z */
+
+  --z-sticky: 10;
+  --z-overlay: 100;
+  --z-toast: 200;
+}
+
+/* Tema escuro: inverte superfície/texto mantendo os acentos da identidade. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--color-navy-950);
+    --color-surface: var(--color-navy-900);
+    --color-surface-raised: var(--color-navy-800);
+    --color-text: var(--color-cloud-100);
+    --color-text-muted: var(--color-navy-300);
+    --color-text-inverse: var(--color-navy-950);
+    --color-border: var(--color-navy-700);
+    --color-border-strong: var(--color-navy-500);
+    --color-accent-contrast: var(--color-navy-950);
+    --color-accent-soft: color-mix(
+      in srgb,
+      var(--color-yellow-500) 18%,
+      transparent
+    );
+    --color-danger-soft: color-mix(
+      in srgb,
+      var(--color-orange-500) 18%,
+      transparent
+    );
+  }
+}
+
+/* ------------------------------------------------------------- base mínima
+   Não é tela: só a fundação que consome os tokens acima. Telas e componentes
+   ficam nos módulos de cada rota e em `components/`.                     */
+
+@layer base {
+  html {
+    height: 100%;
+    color-scheme: light dark;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    color: var(--color-text);
+    background: var(--color-bg);
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  code,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+  }
+}

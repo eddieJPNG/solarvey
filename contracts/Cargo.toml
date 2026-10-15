@@ -1,0 +1,15 @@
+[workspace]
+members = ["solarvey-escrow"]
+resolver = "2"
+
+# Perfil de release para wasm32v1-none — alinhado à skill stellar-dev.smart-contracts
+# (limite de 128KB por contrato).
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true

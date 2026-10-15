@@ -141,3 +141,19 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# --- Rust / Soroban ---
+contracts/target/
+**/test_snapshots/
+*.wasm
+!contracts/**/fixtures/*.wasm
+
+# --- stellar CLI local state (se alguma vez mover para o repo) ---
+.stellar/
+
+# --- Playwright / e2e ---
+web/test-results/
+web/playwright-report/
+web/blob-report/
+web/.playwright/
+web/e2e/artifacts/
